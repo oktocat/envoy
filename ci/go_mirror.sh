@@ -2,7 +2,8 @@
 
 set -e
 
-if [ -z "$CIRCLE_PULL_REQUEST" ] && [ "$CIRCLE_BRANCH" == "master" ]
-then
+MAIN_BRANCH="refs/heads/azp_api"
+
+if [[ "${AZP_BRANCH}" == "${MAIN_BRANCH}" ]]; then
   tools/api/generate_go_protobuf.py
 fi
